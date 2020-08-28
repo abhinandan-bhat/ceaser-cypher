@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <title>
+      CAESAR CYPHER ENCRYPTION AND DECRYPTION
+    </title>
+  </head>
+  <body text="green" bgcolor="black">
+    <p style="font-size:50px"> CAESAR CYPHER </p>
+    <p>
+      The Caesar cipher is one of the earliest known and simplest ciphers. It is a type of substitution cipher in which each letter in the plaintext is 'shifted' a certain number of places down the alphabet. For example, with a shift of 1, A would be replaced by B, B would become C, and so on. The method is named after Julius Caesar, who apparently used it to communicate with his generals. More complex encryption schemes such as the Vigenère cipher employ the Caesar cipher as one element of the encryption process. The widely known ROT13 'encryption' is simply a Caesar cipher with an offset of 13. The Caesar cipher offers essentially no communication security, and it will be shown that it can be easily broken even by hand.
+    </p>
+    <p>Example :
+      To pass an encrypted message from one person to another, it is first necessary that both parties have the 'key' for the cipher, so that the sender may encrypt it and the receiver may decrypt it. For the caesar cipher, the key is the number of characters to shift the cipher alphabet.
+      
+      Here is a quick example of the encryption and decryption steps involved with the caesar cipher. The text we will encrypt is 'defend the east wall of the castle', with a shift (key) of 1.
+      
+      plaintext:  defend the east wall of the castle.
+      ciphertext: efgfoe uif fbtu xbmm pg uif dbtumf.
+      It is easy to see how each character in the plaintext is shifted up the alphabet. Decryption is just as easy, by using an offset of -1.
+      
+      plain:  abcdefghijklmnopqrstuvwxyz.
+      cipher: bcdefghijklmnopqrstuvwxyza.
+      Obviously, if a different key is used, the cipher alphabet will be shifted a different amount.
+
+    </p>
+    <p>
+      TRY IT YOURSELF:)
+    </p>
+    <input id="num" size="50" placeholder="enter key"> <br>
+	<input id="txt" size="50" placeholder="enter text"> <br>
+    <button onclick="caesar()" id= "btn2" style="color:green";>encode</button>
+    <button onclick="decaesar()" id ="btn1" style="color:green";>decode</button>
+      <script>
+        function caesar(){
+  var num = parseInt(document.getElementById("num").value)
+  var txt = document.getElementById("txt").value;
+  var x = [];
+  if(num>=-26 && num<=26){
+      for(i=0;i<txt.length;i++){
+        x[i] = txt.charCodeAt(i)+num;
+        if(txt.charCodeAt(i)>=65 && txt.charCodeAt(i)<=90){
+         
+          if(x[i]>=65&&x[i]<=90){
+            x[i]=x[i];
+          }
+          else if(x[i]>90){
+            x[i]=x[i]-26;
+          }
+          else if(x[i]<65){
+            x[i]=x[i]+26;     
+          }
+        
+      }
+        if(txt.charCodeAt(i)==32){
+            x[i]=txt.charCodeAt(i);
+          }
+        
+        if(txt.charCodeAt(i)>=97 && txt.charCodeAt(i)<=122){
+          
+          if(x[i]>=97&&x[i]<=122){
+            x[i]=x[i];
+          }
+          else if(x[i]>122){
+            x[i]=x[i]-26;
+          }
+          else if(x[i]<97){
+            x[i]=x[i]+26;     
+          }
+          
+        }
+        
+        
+      }
+    
+    
+  }
+  else{
+    document.write("Number must be from -26 to 26, try again :)")
+  }
+  document.write("encryption of "+txt+" is ")
+  document.write(String.fromCharCode.apply(null, x))
+  
+}
+
+
+function decaesar(){
+  var num = parseInt(document.getElementById("num").value)*-1
+  var txt = document.getElementById("txt").value;
+  var x = [];
+  if(num>=-26 && num<=26){
+      for(i=0;i<txt.length;i++){
+        x[i] = txt.charCodeAt(i)+num;
+        if(txt.charCodeAt(i)>=65 && txt.charCodeAt(i)<=90){
+         
+          if(x[i]>=65&&x[i]<=90){
+            x[i]=x[i];
+          }
+          else if(x[i]>90){
+            x[i]=x[i]-26;
+          }
+          else if(x[i]<65){
+            x[i]=x[i]+26;     
+          }
+        
+      }
+        if(txt.charCodeAt(i)==32){
+            x[i]=txt.charCodeAt(i);
+          }
+        
+        if(txt.charCodeAt(i)>=97 && txt.charCodeAt(i)<=122){
+          
+          if(x[i]>=97&&x[i]<=122){
+            x[i]=x[i];
+          }
+          else if(x[i]>122){
+            x[i]=x[i]-26;
+          }
+          else if(x[i]<97){
+            x[i]=x[i]+26;     
+          }
+          
+        }
+        
+        
+      }
+    
+    
+  }
+  else{
+    document.write("Number must be from -26 to 26, try again ")
+  }
+  document.write("decryption of "+txt+" is ")
+  document.write(String.fromCharCode.apply(null, x))
+  
+}
+</script>
+  </body>
+</html>
